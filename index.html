@@ -1,0 +1,1755 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f6f1e6">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="London 2026">
+<title>Hayes & Kayla · London 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f6f1e6'/%3E%3Crect x='3' y='3' width='58' height='58' rx='12' fill='none' stroke='%23a8843e' stroke-width='1'/%3E%3Ctext x='32' y='42' font-size='28' text-anchor='middle' fill='%231c2440' font-family='Georgia,serif' font-style='italic' font-weight='600'%3EL%3C/text%3E%3Crect x='22' y='48' width='20' height='1.5' fill='%238a1d2f'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%23f6f1e6'/%3E%3Crect x='8' y='8' width='164' height='164' rx='34' fill='none' stroke='%23a8843e' stroke-width='2'/%3E%3Ctext x='90' y='112' font-size='80' text-anchor='middle' fill='%231c2440' font-family='Georgia,serif' font-style='italic' font-weight='600'%3EL%3C/text%3E%3Crect x='62' y='128' width='56' height='3' fill='%238a1d2f'/%3E%3Ctext x='90' y='150' font-size='10' text-anchor='middle' fill='%237a5a23' font-family='Georgia,serif' letter-spacing='4'%3E2026%3C/text%3E%3C/svg%3E">
+
+<style>
+  :root {
+    color-scheme: light;
+    /* A Mayfair townhouse: ivory & parchment, ink, crimson, gold leaf */
+    --bg: #f6f1e6;            /* warm ivory */
+    --bg-elev: #fffdf7;       /* clotted cream card */
+    --bg-soft: #ece4d2;       /* parchment */
+    --ink: #1c2440;           /* Westminster ink */
+    --ink-soft: #3e4763;
+    --ink-mute: #8a8775;
+    --accent: #a8843e;        /* gold leaf */
+    --accent-deep: #7a5a23;   /* burnished gold */
+    --thames: #234a6b;        /* river blue */
+    --crimson: #8a1d2f;       /* phone-box red */
+    --crimson-soft: #a8364a;
+    --green: #1f4733;         /* British racing green */
+    --line: #d6cbb2;          /* warm taupe rule */
+    --line-soft: #e7dec6;
+    --shadow: 0 1px 2px rgba(28,36,64,.04), 0 6px 16px rgba(28,36,64,.07);
+    --shadow-up: 0 -2px 14px rgba(28,36,64,.08);
+    --radius: 12px;
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bot: env(safe-area-inset-bottom, 0px);
+  }
+
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; padding: 0; }
+  html { background: var(--bg); }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.5;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: calc(72px + var(--safe-bot));
+    min-height: 100vh;
+  }
+
+  .serif { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; }
+
+  /* HEADER */
+  .hero {
+    padding: calc(var(--safe-top) + 26px) 20px 22px;
+    background:
+      radial-gradient(ellipse at top right, rgba(168,132,62,.10), transparent 60%),
+      linear-gradient(180deg, #fbf6ea 0%, var(--bg) 100%);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    text-align: center;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    left: 50%; bottom: -1px;
+    transform: translateX(-50%);
+    width: 64px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hero-eyebrow::before, .hero-eyebrow::after {
+    content: "";
+    width: 18px; height: 1px;
+    background: var(--accent);
+  }
+  .hero-title {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-size: 34px;
+    font-weight: 600;
+    margin: 8px 0 4px;
+    letter-spacing: -.005em;
+    line-height: 1.1;
+    color: var(--ink);
+    font-style: italic;
+  }
+  .hero-sub {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .countdown {
+    display: flex;
+    gap: 0;
+    margin-top: 20px;
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .countdown .pill {
+    flex: 1;
+    padding: 12px 4px 10px;
+    text-align: center;
+    border-right: 1px solid var(--line-soft);
+  }
+  .countdown .pill:last-child { border-right: 0; }
+  .countdown .num {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1;
+    font-feature-settings: "lnum";
+  }
+  .countdown .lbl {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: .22em;
+    color: var(--accent-deep);
+    margin-top: 6px;
+    font-weight: 600;
+  }
+
+  /* TAB CONTENT */
+  main { padding: 18px 16px 8px; max-width: 720px; margin: 0 auto; }
+  .tab { display: none; }
+  .tab.active { display: block; }
+
+  /* Section heading */
+  .section-h {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 28px 4px 14px;
+    gap: 14px;
+    text-align: center;
+  }
+  .section-h:first-child { margin-top: 6px; }
+  .section-h::before, .section-h::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--line), transparent);
+    max-width: 80px;
+  }
+  .section-h h2 {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-size: 17px;
+    margin: 0;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--ink);
+    letter-spacing: .01em;
+  }
+  .section-h .meta {
+    font-size: 10px;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: .18em;
+    font-weight: 600;
+  }
+
+  /* DAY HEADER */
+  .day-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    background:
+      linear-gradient(180deg, rgba(255,253,247,.6), transparent),
+      var(--bg-soft);
+    border-radius: 10px;
+    margin: 26px 0 12px;
+    border: 1px solid var(--line);
+    position: relative;
+  }
+  .day-header::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--accent), var(--crimson));
+    border-radius: 10px 0 0 10px;
+  }
+  .day-header .left {
+    display: flex;
+    flex-direction: column;
+  }
+  .day-header .day-num {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: .28em;
+    color: var(--crimson);
+    font-weight: 700;
+  }
+  .day-header .day-date {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 3px;
+    font-style: italic;
+    color: var(--ink);
+  }
+  .day-header .day-tag {
+    font-size: 10px;
+    color: var(--ink-soft);
+    background: var(--bg-elev);
+    padding: 5px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    font-weight: 600;
+  }
+
+  /* EVENT CARD */
+  .event {
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    margin-bottom: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: border-color .15s ease;
+  }
+  .event-head {
+    display: grid;
+    grid-template-columns: 64px 1fr auto;
+    align-items: center;
+    padding: 12px 14px;
+    cursor: pointer;
+    gap: 10px;
+    user-select: none;
+  }
+  .event-time {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--crimson);
+    line-height: 1.1;
+    font-feature-settings: "lnum";
+  }
+  .event-time .ampm {
+    font-size: 9px;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: .18em;
+    margin-top: 3px;
+    font-weight: 600;
+  }
+  .event-title {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  .event-title .name {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .event-title .sub {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin-top: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .chev {
+    color: var(--ink-mute);
+    font-size: 18px;
+    transition: transform .2s ease;
+    line-height: 1;
+  }
+  .event.open .chev { transform: rotate(90deg); }
+
+  .event-body {
+    display: none;
+    border-top: 1px solid var(--line-soft);
+    padding: 4px 0 0;
+  }
+  .event.open .event-body { display: block; }
+
+  .row {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    gap: 12px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--line-soft);
+    align-items: baseline;
+  }
+  .row:last-child { border-bottom: 0; }
+  .row .k {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--ink-mute);
+  }
+  .row .v {
+    font-size: 14.5px;
+    color: var(--ink);
+    word-break: break-word;
+  }
+  .row .v a {
+    color: var(--thames);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .row .v a:active { opacity: .6; }
+  .row .v .conf {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 13px;
+    background: var(--bg-soft);
+    padding: 2px 6px;
+    border-radius: 4px;
+    letter-spacing: .03em;
+  }
+
+  .actions {
+    display: flex;
+    gap: 8px;
+    padding: 10px 14px 12px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid var(--line);
+    background: var(--bg-soft);
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .btn.primary {
+    background: var(--ink);
+    color: #f6f1e6;
+    border-color: var(--ink);
+    letter-spacing: .04em;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn .ic { font-size: 14px; }
+
+  .note {
+    background: rgba(176,133,68,.08);
+    border-left: 3px solid var(--accent);
+    padding: 10px 12px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin: 8px 14px 12px;
+    border-radius: 6px;
+    line-height: 1.45;
+  }
+  .note strong { color: var(--ink); }
+
+  /* tag pill on header */
+  .tag {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-left: 6px;
+    vertical-align: middle;
+    border: 1px solid currentColor;
+    background: transparent;
+  }
+  .tag-eat { color: var(--crimson); }
+  .tag-see { color: var(--thames); }
+  .tag-go  { color: var(--green); }
+  .tag-status {
+    margin-left: 4px;
+    border-radius: 999px;
+    padding: 2px 7px;
+  }
+  .tag-pending {
+    color: var(--crimson);
+    background: rgba(138,29,47,.08);
+    border-color: var(--crimson-soft);
+  }
+  .tag-walkin {
+    color: var(--ink-mute);
+    background: rgba(138,135,117,.08);
+    border-color: var(--ink-mute);
+  }
+  .tag-inhouse {
+    color: var(--accent-deep);
+    background: rgba(168,132,62,.08);
+    border-color: var(--accent);
+  }
+
+  /* HOTEL CARD */
+  .hotel-card {
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .hotel-band {
+    background:
+      linear-gradient(180deg, rgba(255,253,247,.08), transparent),
+      linear-gradient(135deg, #1c2440 0%, #243056 100%);
+    color: #f6f1e6;
+    padding: 22px 18px;
+    position: relative;
+    text-align: center;
+    border-bottom: 1px solid var(--accent);
+  }
+  .hotel-band::after {
+    content: "";
+    position: absolute;
+    left: 50%; bottom: -1px;
+    transform: translateX(-50%);
+    width: 40px; height: 1px;
+    background: var(--accent);
+  }
+  .hotel-band .small {
+    font-size: 9px;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hotel-band .small::before, .hotel-band .small::after {
+    content: "";
+    width: 16px; height: 1px;
+    background: var(--accent);
+    opacity: .6;
+  }
+  .hotel-band h3 {
+    margin: 8px 0 0;
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -.005em;
+    font-style: italic;
+  }
+  .hotel-band .addr {
+    font-size: 12.5px;
+    margin-top: 10px;
+    opacity: .85;
+    line-height: 1.55;
+    letter-spacing: .03em;
+  }
+  .hotel-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--line-soft);
+  }
+  .hotel-actions a {
+    background: var(--bg-elev);
+    padding: 14px 12px;
+    color: var(--thames);
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+  }
+  .hotel-actions a .ic { font-size: 18px; }
+  .hotel-actions a .lbl { font-size: 11px; color: var(--ink-mute); font-weight: 500; letter-spacing: .04em; }
+
+  /* QUICK REF LIST */
+  .ref-list {
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .ref-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--line-soft);
+    gap: 10px;
+  }
+  .ref-row:last-child { border-bottom: 0; }
+  .ref-name { font-size: 13.5px; flex: 1; min-width: 0; }
+  .ref-name .when { display: block; font-size: 11px; color: var(--ink-mute); margin-top: 1px; }
+  .ref-code {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 12.5px;
+    background: var(--bg-soft);
+    padding: 4px 8px;
+    border-radius: 5px;
+    color: var(--ink);
+    border: 1px solid var(--line);
+    cursor: pointer;
+    user-select: all;
+    white-space: nowrap;
+  }
+  .ref-code:active { background: var(--accent); color: #fff; }
+
+  /* NOW WIDGET */
+  .now-card {
+    background:
+      linear-gradient(180deg, #fffdf7, #faf4e6);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--crimson);
+    border-radius: var(--radius);
+    padding: 18px 18px 16px;
+    margin-bottom: 18px;
+    box-shadow: var(--shadow);
+    position: relative;
+    text-align: center;
+  }
+  .now-card .now-lbl {
+    font-size: 9px;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .now-card .now-lbl::before, .now-card .now-lbl::after {
+    content: "";
+    width: 14px; height: 1px;
+    background: var(--accent);
+  }
+  .now-card .now-title {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 8px;
+    line-height: 1.2;
+    font-style: italic;
+    color: var(--ink);
+  }
+  .now-card .now-sub {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+  }
+  .now-card .now-time {
+    font-size: 11px;
+    color: var(--accent-deep);
+    margin-top: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .18em;
+  }
+
+  /* TAB BAR */
+  nav.tabs {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--bg-elev);
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    box-shadow: var(--shadow-up);
+    padding-bottom: var(--safe-bot);
+    z-index: 50;
+  }
+  nav.tabs button {
+    background: transparent;
+    border: 0;
+    border-top: 2px solid transparent;
+    padding: 10px 4px 10px;
+    color: var(--ink-mute);
+    font-size: 9.5px;
+    letter-spacing: .18em;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-family: inherit;
+    transition: color .15s ease, border-color .15s ease;
+  }
+  nav.tabs button .ic {
+    font-size: 18px;
+    line-height: 1;
+    filter: grayscale(.3);
+    opacity: .75;
+  }
+  nav.tabs button.active {
+    color: var(--crimson);
+    border-top-color: var(--crimson);
+  }
+  nav.tabs button.active .ic {
+    filter: none;
+    opacity: 1;
+  }
+
+  /* misc */
+  .empty {
+    text-align: center;
+    padding: 30px 16px;
+    color: var(--ink-mute);
+    font-size: 14px;
+  }
+  .empty .em-title {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-size: 18px;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .footer-credit {
+    text-align: center;
+    color: var(--ink-mute);
+    font-size: 10px;
+    margin-top: 36px;
+    margin-bottom: 8px;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-style: italic;
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  }
+  .footer-credit::before, .footer-credit::after {
+    content: "❦";
+    margin: 0 12px;
+    color: var(--accent);
+    font-style: normal;
+    font-size: 9px;
+    vertical-align: 1px;
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-eyebrow">Hayes &amp; Kayla</div>
+  <div class="hero-title serif">London, 2026</div>
+  <div class="hero-sub">24 – 30 June · Four Seasons at Tower Bridge</div>
+  <div class="countdown" id="countdown">
+    <div class="pill"><div class="num" id="cd-d">—</div><div class="lbl">Days</div></div>
+    <div class="pill"><div class="num" id="cd-h">—</div><div class="lbl">Hours</div></div>
+    <div class="pill"><div class="num" id="cd-m">—</div><div class="lbl">Mins</div></div>
+    <div class="pill"><div class="num" id="cd-s">—</div><div class="lbl">Secs</div></div>
+  </div>
+</header>
+
+<main>
+
+  <!-- TODAY / OVERVIEW -->
+  <section class="tab active" id="tab-today">
+    <div id="now-slot"></div>
+    <div class="section-h"><h2 class="serif">At a glance</h2></div>
+    <div id="overview-list"></div>
+    <div class="footer-credit">Bon voyage</div>
+  </section>
+
+  <!-- ITINERARY -->
+  <section class="tab" id="tab-itinerary">
+    <div id="itinerary-list"></div>
+    <div class="footer-credit">End of trip · Safe travels</div>
+  </section>
+
+  <!-- HOTEL -->
+  <section class="tab" id="tab-hotel">
+    <div class="section-h"><h2 class="serif">Home base</h2></div>
+    <div class="hotel-card">
+      <div class="hotel-band">
+        <div class="small">Four Seasons Hotel</div>
+        <h3>London at Tower Bridge</h3>
+        <div class="addr">10 Trinity Square<br>London EC3N 4AJ · United Kingdom</div>
+      </div>
+      <div class="hotel-actions">
+        <a href="tel:+442032973748"><span class="ic">📞</span><span>Front desk</span><span class="lbl">+44 20 3297 3748</span></a>
+        <a href="sms:+447481347440"><span class="ic">💬</span><span>Concierge SMS</span><span class="lbl">+44 74 8134 7440</span></a>
+        <a href="mailto:concierge.towerbridge@fourseasons.com"><span class="ic">✉️</span><span>Concierge email</span><span class="lbl">tap to write</span></a>
+        <a href="https://maps.apple.com/?q=Four+Seasons+Hotel+London+at+Tower+Bridge,+10+Trinity+Square,+London+EC3N+4AJ" target="_blank" rel="noopener"><span class="ic">🗺️</span><span>Open in Maps</span><span class="lbl">10 Trinity Square</span></a>
+      </div>
+    </div>
+
+    <div class="section-h"><h2 class="serif">Travel</h2></div>
+    <div id="travel-list"></div>
+
+    <div class="section-h"><h2 class="serif">Good to know</h2></div>
+    <div class="event open">
+      <div class="event-body">
+        <div class="row"><div class="k">Currency</div><div class="v">Pound Sterling (£). Most spots take Visa &amp; Mastercard. Several restaurants noted they do <strong>not accept Amex</strong>: Fallow, Din Tai Fung.</div></div>
+        <div class="row"><div class="k">Tipping</div><div class="v">Service is often included; round up or add 10–12.5% for great service.</div></div>
+        <div class="row"><div class="k">Power</div><div class="v">UK Type G plug, 230V. Bring an adapter.</div></div>
+        <div class="row"><div class="k">Dress code</div><div class="v">Rules expects smart attire — no shorts. (Fallow doesn’t list one but it’s a refined room.)</div></div>
+        <div class="row"><div class="k">Time zone</div><div class="v">British Summer Time (BST, UTC+1) in late June.</div></div>
+      </div>
+    </div>
+
+    <div class="footer-credit">Tower Bridge district</div>
+  </section>
+
+  <!-- REFERENCES -->
+  <section class="tab" id="tab-refs">
+    <div class="section-h"><h2 class="serif">Confirmations</h2><span class="meta">tap to copy</span></div>
+    <div class="ref-list" id="ref-list"></div>
+
+    <div class="section-h"><h2 class="serif">Phone book</h2></div>
+    <div class="ref-list" id="phone-list"></div>
+
+    <div class="footer-credit">All in one place</div>
+  </section>
+
+</main>
+
+<nav class="tabs">
+  <button data-tab="today" class="active"><span class="ic">✨</span><span>Today</span></button>
+  <button data-tab="itinerary"><span class="ic">📖</span><span>Itinerary</span></button>
+  <button data-tab="hotel"><span class="ic">🏛️</span><span>Hotel</span></button>
+  <button data-tab="refs"><span class="ic">🎟️</span><span>Refs</span></button>
+</nav>
+
+<script>
+/* ---------- TRIP DATA ---------- */
+/* All times are local London (BST). Datetimes use ISO with +01:00 offset. */
+
+const TRIP_START = new Date("2026-06-24T06:25:00+01:00");
+const TRIP_END   = new Date("2026-06-30T13:25:00+01:00");
+
+const HOTEL = {
+  name: "Four Seasons Hotel London at Tower Bridge",
+  addr: "10 Trinity Square, London EC3N 4AJ",
+  mapsQuery: "Four Seasons Hotel London at Tower Bridge, 10 Trinity Square, London EC3N 4AJ"
+};
+
+const days = [
+  {
+    n: 1, label: "Day 1", date: "2026-06-24", weekday: "Wednesday", short: "Wed, June 24",
+    tag: "Arrival",
+    events: [
+      {
+        cat: "go", title: "Arrive at Heathrow",
+        sub: "Delta DL30 · Range Rover transfer waiting",
+        start: "2026-06-24T06:25:00+01:00",
+        details: [
+          ["Flight", "Delta DL30 · Delta One Classic (Z)"],
+          ["Departed", "ATL · Tue 5:05 PM"],
+          ["Lands", "LHR · Wed 6:25 AM"],
+          ["Pickup", "Range Rover · Four Seasons chauffeur"],
+          ["Meet", "Arrivals area, just past customs. Driver carries Four Seasons sign."],
+          ["Drop-off", "Four Seasons Hotel London at Tower Bridge"],
+          ["Booked", "2 guests · 4 bags · £290"]
+        ],
+        note: "If you can’t spot the driver, do not leave the terminal — call the concierge at +44 20 3297 3748. 45 min waiting time included; £140/hr after.",
+        actions: [
+          { kind: "tel", label: "Call concierge", value: "+442032973748" }
+        ]
+      },
+      {
+        cat: "go", status: "inhouse", title: "Drop bags at Four Seasons",
+        sub: "Around 8:30 AM · request early check-in",
+        start: "2026-06-24T08:30:00+01:00",
+        details: [
+          ["Plan", "Bags with the bell desk while you head out"],
+          ["Ask", "Early check-in if a room is ready"],
+          ["Walk next", "5 min across Tower Bridge to Borough Market"]
+        ]
+      },
+      {
+        cat: "eat", status: "walkin", title: "Borough Market",
+        sub: "10:00 AM · skip breakfast, arrive hungry",
+        start: "2026-06-24T10:00:00+01:00",
+        details: [
+          ["Plan", "Walk-in. Stalls, coffee, pastries, oysters"],
+          ["Travel", "5 min walk across Tower Bridge from hotel"],
+          ["Address", "8 Southwark Street, London SE1 1TL"]
+        ],
+        actions: [
+          { kind: "map", label: "Directions", value: "Borough Market, 8 Southwark Street, London SE1 1TL" }
+        ]
+      },
+      {
+        cat: "see", title: "Tower of London",
+        sub: "Entry 12:00 – 12:30 · audio guides included",
+        start: "2026-06-24T12:00:00+01:00",
+        details: [
+          ["Entry", "Wednesday, 24 June · 12:00 – 12:30"],
+          ["Allow", "2 – 3 hours"],
+          ["Tickets", "2 × Adult Admission + 2 × Audio Guide"],
+          ["Order Ref", { conf: "DVOSV6AX63W9N" }],
+          ["Ticket 1", { conf: "DVT 2RS RKM Z1R1" }],
+          ["Ticket 2", { conf: "DVT L4S ZMG 2ZSN" }],
+          ["Audio 1", { conf: "DVT RD9 OKV 3VGU" }],
+          ["Audio 2", { conf: "DVT QPL 6DY HRFE" }],
+          ["Travel", "10 min walk along the Thames from Borough Market"],
+          ["Address", "Tower of London, EC3N 4AB"]
+        ],
+        actions: [
+          { kind: "map", label: "Directions", value: "Tower of London, London EC3N 4AB" }
+        ]
+      },
+      {
+        cat: "see", status: "walkin", title: "Big Bus Tour",
+        sub: "Hop-on around 2:30 PM · ~1 hr loop",
+        start: "2026-06-24T14:30:00+01:00",
+        details: [
+          ["Plan", "Buy tickets at the stop · double-decker hop-on/hop-off"],
+          ["Loop", "About one hour — hop off near the hotel"],
+          ["Travel", "5 min walk from Tower of London to bus stop"]
+        ]
+      },
+      {
+        cat: "go", status: "inhouse", title: "Check in & recharge",
+        sub: "Around 3:45 PM",
+        start: "2026-06-24T15:45:00+01:00",
+        details: [
+          ["At", "Four Seasons Hotel London at Tower Bridge"],
+          ["Plan", "Settle in, shower, regroup before dinner"]
+        ]
+      },
+      {
+        cat: "eat", title: "Cooper’s Cut",
+        sub: "Dinner · 6:00 PM · in the hotel",
+        start: "2026-06-24T18:00:00+01:00",
+        details: [
+          ["When", "Wednesday, 24 June · 6:00 PM"],
+          ["Party", "Table for 2"],
+          ["Confirmation", { conf: "2188" }],
+          ["Address", "10 Trinity Square, London EC3N 4AJ (in the Four Seasons)"],
+          ["Phone", { tel: "+442032979228", display: "020 3297 9228" }]
+        ],
+        note: "Steakhouse inside the Four Seasons — easy night after the red-eye. 15-min grace period.",
+        actions: [
+          { kind: "tel", label: "Call restaurant", value: "+442032979228" },
+          { kind: "map", label: "Directions", value: "Cooper's Cut, 10 Trinity Square, London EC3N 4AJ" }
+        ]
+      }
+    ]
+  },
+
+  {
+    n: 2, label: "Day 2", date: "2026-06-25", weekday: "Thursday", short: "Thu, June 25",
+    tag: "Westminster & Batiste",
+    events: [
+      {
+        cat: "eat", status: "inhouse", title: "Breakfast at the hotel",
+        sub: "8:30 AM",
+        start: "2026-06-25T08:30:00+01:00",
+        details: [
+          ["At", "Four Seasons London at Tower Bridge"],
+          ["Travel next", "Tube · Tower Hill → Westminster · ~15 min"]
+        ]
+      },
+      {
+        cat: "see", title: "Churchill War Rooms",
+        sub: "Entry 10:00 – 10:30 · 2 adults",
+        start: "2026-06-25T10:00:00+01:00",
+        details: [
+          ["Entry", "Thursday, 25 June · 10:00 – 10:30"],
+          ["Allow", "90 min – 2 hours"],
+          ["Tickets", "2 × Adult General Admission"],
+          ["Order Ref", { conf: "D7JNH44Y1" }],
+          ["Address", "Clive Steps, King Charles Street, London SW1A 2AQ"]
+        ],
+        note: "Suitcases and large bags are not permitted, and there are no cloakroom facilities on site. The Bloomberg Connects app has a free guide if you want extra context.",
+        actions: [
+          { kind: "map", label: "Directions", value: "Churchill War Rooms, Clive Steps, King Charles Street, London SW1A 2AQ" }
+        ]
+      },
+      {
+        cat: "eat", status: "walkin", title: "St. Stephen’s Tavern",
+        sub: "Fish &amp; chips · 12:30 PM · walk-in",
+        start: "2026-06-25T12:30:00+01:00",
+        details: [
+          ["Plan", "Walk-in for classic fish & chips"],
+          ["Travel", "5 min walk from Churchill War Rooms"],
+          ["Address", "10 Bridge Street, London SW1A 2JR"]
+        ],
+        actions: [
+          { kind: "map", label: "Directions", value: "St Stephens Tavern, 10 Bridge Street, London SW1A 2JR" }
+        ]
+      },
+      {
+        cat: "see", status: "walkin", title: "Westminster Walk",
+        sub: "1:30 PM · Abbey, Parliament, Big Ben, London Eye",
+        start: "2026-06-25T13:30:00+01:00",
+        details: [
+          ["Plan", "Wander Westminster — Abbey, Parliament Square, Big Ben, then over to the London Eye"],
+          ["On foot", "Continuous · pace is yours"]
+        ]
+      },
+      {
+        cat: "eat", status: "pending", title: "Circolo Popolare",
+        sub: "Early dinner · 4:30 PM (must finish by 6:15)",
+        start: "2026-06-25T16:30:00+01:00",
+        details: [
+          ["When", "Thursday, 25 June · 4:30 PM"],
+          ["Constraint", "Finish by 6:15 to make Batiste"],
+          ["Book at", "circolopopolare.com"],
+          ["Address", "40-41 Rathbone Place, London W1T 1HX"],
+          ["Travel", "Tube · Westminster → Tottenham Ct Rd · ~15 min"]
+        ],
+        note: "<strong>Not yet booked.</strong> Confirmation # to be added once reserved.",
+        actions: [
+          { kind: "url", label: "Book online", value: "https://www.circolopopolare.com" },
+          { kind: "map", label: "Directions", value: "Circolo Popolare, 40-41 Rathbone Place, London W1T 1HX" }
+        ]
+      },
+      {
+        cat: "see", status: "pending", title: "Jon Batiste · By Request",
+        sub: "KOKO Camden · 7:00 PM doors",
+        start: "2026-06-25T19:00:00+01:00",
+        details: [
+          ["When", "Thursday, 25 June · 7:00 PM"],
+          ["Venue", "KOKO · 1A Camden High Street, London NW1 7JE"],
+          ["Capacity", "1,400 · standing"],
+          ["Tickets", "ticketmaster.co.uk · ~£45 – £80"],
+          ["Travel", "Tube · Tottenham Ct Rd → Mornington Crescent · 12 min + 5 min walk"]
+        ],
+        note: "<strong>Not yet booked.</strong> Confirmation # / barcode to be added once tickets are secured.",
+        actions: [
+          { kind: "url", label: "Buy tickets", value: "https://www.ticketmaster.co.uk" },
+          { kind: "map", label: "Directions", value: "KOKO, 1A Camden High Street, London NW1 7JE" }
+        ]
+      }
+    ]
+  },
+
+  {
+    n: 3, label: "Day 3", date: "2026-06-26", weekday: "Friday", short: "Fri, June 26",
+    tag: "Cotswolds day trip",
+    events: [
+      {
+        cat: "go", title: "Range Rover · Cotswolds",
+        sub: "Pickup 7:30 AM · driver waits & returns",
+        start: "2026-06-26T07:30:00+01:00",
+        details: [
+          ["Depart", "Friday, 26 June · 7:30 AM from hotel"],
+          ["Return", "Approx 4:30 PM · arrive London 6:30 – 7:00 PM"],
+          ["Service", "Range Rover · as-directed (wait & return)"],
+          ["Billing", "£150 per hour (3-hour minimum)"],
+          ["Concierge", { tel: "+442032973748", display: "+44 20 3297 3748" }]
+        ]
+      },
+      {
+        cat: "see", status: "walkin", title: "Bibury · Arlington Row",
+        sub: "Around 9:45 AM · start of the loop",
+        start: "2026-06-26T09:45:00+01:00",
+        details: [
+          ["Plan", "Most southern stop — start here"],
+          ["Travel", "~2 hr drive from London"],
+          ["Address", "Arlington Row, Bibury, Cirencester GL7 5NH"]
+        ],
+        actions: [
+          { kind: "map", label: "Directions", value: "Arlington Row, Bibury, Cirencester GL7 5NH" }
+        ]
+      },
+      {
+        cat: "see", status: "walkin", title: "Bourton-on-the-Water",
+        sub: "Around 10:45 AM · River Windrush · coffee",
+        start: "2026-06-26T10:45:00+01:00",
+        details: [
+          ["Plan", "Stroll along the River Windrush, grab a coffee"],
+          ["Travel", "~20 min drive from Bibury"],
+          ["Address", "Bourton-on-the-Water GL54 2AN"]
+        ],
+        actions: [
+          { kind: "map", label: "Directions", value: "Bourton-on-the-Water, Cheltenham GL54 2AN" }
+        ]
+      },
+      {
+        cat: "see", status: "walkin", title: "Walk to Lower Slaughter",
+        sub: "12:00 PM · footpath along the River Eye",
+        start: "2026-06-26T12:00:00+01:00",
+        details: [
+          ["Plan", "About 20 min on foot along the river — the walk IS the destination"],
+          ["Ends", "At The Slaughters Country Inn for lunch"]
+        ]
+      },
+      {
+        cat: "eat", title: "The Slaughters Country Inn",
+        sub: "Lunch · 12:30 PM · terrace requested",
+        start: "2026-06-26T12:30:00+01:00",
+        details: [
+          ["When", "Friday, 26 June · 12:30 PM"],
+          ["Party", "Table for 2"],
+          ["Confirmation", { conf: "18309" }],
+          ["Special request", "Terrace seating overlooking the River Eye"],
+          ["Address", "Lower Slaughter, Cheltenham, Gloucestershire GL54 2HS"],
+          ["Phone", { tel: "+441451822143", display: "01451 822143" }]
+        ],
+        actions: [
+          { kind: "tel", label: "Call inn", value: "+441451822143" },
+          { kind: "map", label: "Directions", value: "The Slaughters Country Inn, Lower Slaughter, Cheltenham GL54 2HS" }
+        ]
+      },
+      {
+        cat: "see", status: "walkin", title: "Stow-on-the-Wold",
+        sub: "Around 2:00 PM · antiques · St. Edward’s tree-door",
+        start: "2026-06-26T14:00:00+01:00",
+        details: [
+          ["Plan", "Antique shops and the famous tree-flanked door of St. Edward’s Church"],
+          ["Travel", "~10 min drive from Lower Slaughter (driver meets you)"]
+        ],
+        actions: [
+          { kind: "map", label: "Directions", value: "Stow-on-the-Wold, GL54 1AF" }
+        ]
+      },
+      {
+        cat: "see", status: "walkin", title: "Broadway",
+        sub: "Around 3:00 PM · high street · optional Tower hike",
+        start: "2026-06-26T15:00:00+01:00",
+        details: [
+          ["Plan", "High street stroll · optional hike up to Broadway Tower for views"],
+          ["Travel", "~15 min drive from Stow"],
+          ["Then", "~2 hr drive back to London"]
+        ],
+        actions: [
+          { kind: "map", label: "Directions", value: "Broadway, Worcestershire WR12 7AA" }
+        ]
+      },
+      {
+        cat: "eat", title: "Rules",
+        sub: "Dinner · 8:00 PM · smart dress",
+        start: "2026-06-26T20:00:00+01:00",
+        details: [
+          ["When", "Friday, 26 June · 8:00 – 10:00 PM"],
+          ["Party", "Table for 2"],
+          ["Confirmation", { conf: "4RSN6ES6G9LV" }],
+          ["Address", "35 Maiden Lane, London WC2E 7LB"],
+          ["Phone", { tel: "+442078365314", display: "+44 20 7836 5314" }],
+          ["Tip", "Get drinks upstairs first"]
+        ],
+        note: "<strong>Dress code:</strong> smart — no shorts. £25/person fee for no-show or last-minute cancellation. Established 1798 — London’s oldest restaurant.",
+        actions: [
+          { kind: "tel", label: "Call Rules", value: "+442078365314" },
+          { kind: "map", label: "Directions", value: "Rules Restaurant, 35 Maiden Lane, London WC2E 7LB" }
+        ]
+      }
+    ]
+  },
+
+  {
+    n: 4, label: "Day 4", date: "2026-06-27", weekday: "Saturday", short: "Sat, June 27",
+    tag: "Kensington & Windsor",
+    events: [
+      {
+        cat: "eat", title: "The Wolseley",
+        sub: "Breakfast · 8:30 AM",
+        start: "2026-06-27T08:30:00+01:00",
+        details: [
+          ["When", "Saturday, 27 June · 8:30 – 10:00 AM"],
+          ["Party", "Table for 2"],
+          ["Confirmation", { conf: "CU2VAL4MPM9C" }],
+          ["Address", "160 Piccadilly, London W1J 9EB"],
+          ["Phone", { tel: "+442074996996", display: "020 7499 6996" }],
+          ["Travel from", "Tube · Tower Hill → Green Park · ~20 min"]
+        ],
+        actions: [
+          { kind: "tel", label: "Call Wolseley", value: "+442074996996" },
+          { kind: "map", label: "Directions", value: "The Wolseley, 160 Piccadilly, London W1J 9EB" }
+        ]
+      },
+      {
+        cat: "see", title: "Kensington Palace",
+        sub: "Entry 10:00 AM · 2 adults",
+        start: "2026-06-27T10:00:00+01:00",
+        details: [
+          ["Entry", "Saturday, 27 June · 10:00 AM"],
+          ["Allow", "60 – 75 min"],
+          ["Tickets", "2 × Adult Admission"],
+          ["Order Ref", { conf: "DVOJSB74S6DGB" }],
+          ["Ticket 1", { conf: "DVTPN7YU1ZYMX" }],
+          ["Ticket 2", { conf: "DVTP3N4DNQK84" }],
+          ["Address", "Kensington Gardens, London W8 4PX"],
+          ["Travel", "Tube · Green Park → High St Kensington · ~10 min + 5 min walk"]
+        ],
+        note: "Tight transition — Wolseley booking runs until 10:00. Move briskly from breakfast; the entry stamp is timed to 10:00.",
+        actions: [
+          { kind: "map", label: "Directions", value: "Kensington Palace, Kensington Gardens, London W8 4PX" }
+        ]
+      },
+      {
+        cat: "go", title: "Train to Windsor",
+        sub: "Around 12:30 PM · Paddington → Windsor &amp; Eton Central",
+        start: "2026-06-27T12:30:00+01:00",
+        details: [
+          ["Plan", "Tube to Paddington (~10 min), GWR train to Windsor (~30 min, change at Slough)"],
+          ["Walk", "~5 min from station to the castle"]
+        ]
+      },
+      {
+        cat: "see", title: "Windsor Castle",
+        sub: "Entry 1:30 PM · 2 adults",
+        start: "2026-06-27T13:30:00+01:00",
+        details: [
+          ["Entry", "Saturday, 27 June · 1:30 PM"],
+          ["Tickets", "2 × Adult"],
+          ["Order #", { conf: "7617221" }],
+          ["Customer #", { conf: "8526023" }],
+          ["RCT phone", { tel: "+443031237300", display: "+44 303 123 7300" }],
+          ["Heads up", "St George’s Chapel closes at 4:00 PM Saturdays"]
+        ],
+        actions: [
+          { kind: "map", label: "Directions", value: "Windsor Castle, Windsor SL4 1NJ" }
+        ]
+      },
+      {
+        cat: "see", status: "walkin", title: "Wander Windsor",
+        sub: "Around 4:00 PM · Long Walk · shops · pub",
+        start: "2026-06-27T16:00:00+01:00",
+        details: [
+          ["Plan", "Photos along the Long Walk, browse the shops, drop in a pub"],
+          ["Then", "GWR back ~30 min, Tube ~20 min — back to London ~6:00 PM"]
+        ]
+      },
+      {
+        cat: "eat", title: "Fallow",
+        sub: "Dinner · 7:30 PM · Michelin Bib Gourmand",
+        start: "2026-06-27T19:30:00+01:00",
+        details: [
+          ["When", "Saturday, 27 June · 7:30 – 9:30 PM"],
+          ["Party", "Table for 2"],
+          ["Confirmation", { conf: "47DBKP3N5L2S" }],
+          ["Address", "52 Haymarket, London SW1Y 4RP"],
+          ["Phone", { tel: "+442080171788", display: "+44 20 8017 1788" }],
+          ["Order", "Corn ribs + mushroom parfait"],
+          ["Travel", "Tube · Paddington → Piccadilly Circus · ~15 min"]
+        ],
+        note: "Does not accept American Express. £50/person no-show fee.",
+        actions: [
+          { kind: "tel", label: "Call Fallow", value: "+442080171788" },
+          { kind: "map", label: "Directions", value: "Fallow Restaurant, 52 Haymarket, London SW1Y 4RP" }
+        ]
+      }
+    ]
+  },
+
+  {
+    n: 5, label: "Day 5", date: "2026-06-28", weekday: "Sunday", short: "Sun, June 28",
+    tag: "Seven Sisters · Show · Tea",
+    events: [
+      {
+        cat: "eat", status: "inhouse", title: "Early breakfast at the hotel",
+        sub: "7:00 AM",
+        start: "2026-06-28T07:00:00+01:00",
+        details: [
+          ["At", "Four Seasons London at Tower Bridge"],
+          ["Then", "Driver pickup at 7:30 AM"]
+        ]
+      },
+      {
+        cat: "go", title: "Range Rover · Seven Sisters",
+        sub: "Pickup 7:30 AM · drops at Empress Museum",
+        start: "2026-06-28T07:30:00+01:00",
+        details: [
+          ["Depart", "Sunday, 28 June · 7:30 AM from hotel"],
+          ["Plan", "To Birling Gap (Seven Sisters), wait, return to Empress Museum"],
+          ["Service", "Range Rover · as-directed"],
+          ["Billing", "£150 per hour (3-hour minimum)"],
+          ["Concierge", { tel: "+442032973748", display: "+44 20 3297 3748" }]
+        ]
+      },
+      {
+        cat: "see", status: "walkin", title: "Seven Sisters Cliffs",
+        sub: "Arrive ~9:15 AM · Birling Gap · 1.5 hrs",
+        start: "2026-06-28T09:15:00+01:00",
+        details: [
+          ["Plan", "Walk the cliff tops · free entry · wear walking shoes"],
+          ["Address", "Birling Gap, Eastdean, East Sussex BN20 0AB"],
+          ["Travel", "~1 hr 45 min drive from London"],
+          ["Return", "~1 hr 45 min back · driver to Empress Museum"]
+        ],
+        actions: [
+          { kind: "map", label: "Directions", value: "Birling Gap, Eastdean, East Sussex BN20 0AB" }
+        ]
+      },
+      {
+        cat: "see", title: "The Greatest Showman · Live",
+        sub: "Showtime 2:30 PM · Empress Museum",
+        start: "2026-06-28T14:30:00+01:00",
+        details: [
+          ["Show", "Come Alive! The Greatest Showman Circus Spectacular"],
+          ["When", "Sunday, 28 June · 2:30 PM"],
+          ["Runtime", "1 hr 40 min"],
+          ["Seats", "EMPRESS · C3 & C4"],
+          ["Booking Ref", { conf: "TGJR9LQ" }],
+          ["Pre-show", "Experience opens 1 hr before — arrive ~1:30 PM"],
+          ["Address", "Empress Museum, Empress Place, London SW6 1TT"]
+        ],
+        actions: [
+          { kind: "map", label: "Directions", value: "Empress Museum, Empress Place, London SW6 1TT" }
+        ]
+      },
+      {
+        cat: "eat", title: "Diamond Jubilee Tea Salon",
+        sub: "Afternoon Tea at Fortnum &amp; Mason · 5:30 PM",
+        start: "2026-06-28T17:30:00+01:00",
+        details: [
+          ["When", "Sunday, 28 June · 5:30 PM"],
+          ["Party", "Table for 2"],
+          ["Confirmation", { conf: "8Y6JPW458ZLC" }],
+          ["Table held", "1 hr 45 min · 15 min grace period"],
+          ["Address", "181 Piccadilly, London W1A 1ER (W1J 9LE for GPS)"],
+          ["Phone", { tel: "+442077348040", display: "0207 734 8040" }],
+          ["Travel", "Tube · West Brompton → Green Park · ~20 min + 5 min walk"]
+        ],
+        actions: [
+          { kind: "tel", label: "Call salon", value: "+442077348040" },
+          { kind: "map", label: "Directions", value: "Fortnum and Mason, 181 Piccadilly, London W1A 1ER" }
+        ]
+      },
+      {
+        cat: "eat", title: "Din Tai Fung Covent Garden",
+        sub: "Dinner · 7:30 PM",
+        start: "2026-06-28T19:30:00+01:00",
+        details: [
+          ["When", "Sunday, 28 June · 7:30 – 9:00 PM"],
+          ["Party", "Table for 2"],
+          ["Confirmation", { conf: "85X8CT3Z857V" }],
+          ["Address", "5–6 Henrietta Street, Covent Garden, London WC2E 8PS"],
+          ["Phone", { tel: "+442030343888", display: "+44 20 3034 3888" }]
+        ],
+        note: "Table held only 10 minutes past 7:30 PM. Does not accept American Express.",
+        actions: [
+          { kind: "tel", label: "Call DTF", value: "+442030343888" },
+          { kind: "map", label: "Directions", value: "Din Tai Fung Covent Garden, 5-6 Henrietta Street, London WC2E 8PS" }
+        ]
+      }
+    ]
+  },
+
+  {
+    n: 6, label: "Day 6", date: "2026-06-29", weekday: "Monday", short: "Mon, June 29",
+    tag: "Wimbledon · Day 1",
+    events: [
+      {
+        cat: "eat", status: "inhouse", title: "Early breakfast at the hotel",
+        sub: "7:30 AM",
+        start: "2026-06-29T07:30:00+01:00",
+        details: [
+          ["At", "Four Seasons London at Tower Bridge"],
+          ["Then", "Tube · Tower Hill → Southfields · ~45 min (or private car ~30 min)"]
+        ]
+      },
+      {
+        cat: "see", status: "pending", title: "Wimbledon · Day 1",
+        sub: "Arrive ~9:30 AM · play begins 11:00 AM",
+        start: "2026-06-29T09:30:00+01:00",
+        details: [
+          ["Venue", "All England Lawn Tennis & Croquet Club"],
+          ["Gates", "10:00 AM"],
+          ["Play", "From 11:00 AM · first-round singles"],
+          ["Strategy", "Debenture or Four Seasons hospitality — NOT The Queue"],
+          ["On site", "Strawberries & cream + Pimm’s · outside courts shine on Day 1"],
+          ["Depart", "5:00 PM (or stay — matches run past 9 PM in June)"],
+          ["Address", "Church Road, London SW19 5AE"]
+        ],
+        note: "<strong>Tickets not yet booked.</strong> Confirmation # to be added once secured (debenture or concierge route).",
+        actions: [
+          { kind: "map", label: "Directions", value: "All England Lawn Tennis Club, Church Road, London SW19 5AE" }
+        ]
+      },
+      {
+        cat: "eat", title: "Simpson’s Grand Divan",
+        sub: "Final dinner · 8:00 PM",
+        start: "2026-06-29T20:00:00+01:00",
+        details: [
+          ["When", "Monday, 29 June · 8:00 PM"],
+          ["Party", "Table for 2"],
+          ["Confirmation", { conf: "F8A3ZBKPKFM" }],
+          ["Address", "100 Strand, London WC2R 0EZ"],
+          ["Phone", { tel: "+442078369112", display: "020 7836 9112" }],
+          ["Travel", "Tube · Southfields → Temple · ~40 min + 5 min walk"]
+        ],
+        note: "Reopened 2026 by Jeremy King — fitting last night. Table held 15 min past reservation. £40/person no-show fee.",
+        actions: [
+          { kind: "tel", label: "Call Simpson’s", value: "+442078369112" },
+          { kind: "map", label: "Directions", value: "Simpson's in the Strand, 100 Strand, London WC2R 0EZ" }
+        ]
+      }
+    ]
+  },
+
+  {
+    n: 7, label: "Day 7", date: "2026-06-30", weekday: "Tuesday", short: "Tue, June 30",
+    tag: "Departure",
+    events: [
+      {
+        cat: "eat", status: "inhouse", title: "Breakfast at the hotel",
+        sub: "8:00 AM",
+        start: "2026-06-30T08:00:00+01:00",
+        details: [
+          ["At", "Four Seasons London at Tower Bridge"],
+          ["Then", "Pack, settle the bill, walk Shad Thames before checkout"]
+        ]
+      },
+      {
+        cat: "go", status: "inhouse", title: "Check out · final stroll",
+        sub: "9:30 AM · Shad Thames",
+        start: "2026-06-30T09:30:00+01:00",
+        details: [
+          ["Plan", "Settle out, walk along Shad Thames one last time"]
+        ]
+      },
+      {
+        cat: "go", title: "Range Rover to Heathrow",
+        sub: "Pickup 10:15 AM from hotel",
+        start: "2026-06-30T10:15:00+01:00",
+        details: [
+          ["Depart", "Tuesday, 30 June · 10:15 AM"],
+          ["Service", "Range Rover · 2 guests, 4 bags · £290"],
+          ["Pickup", "Four Seasons Hotel London at Tower Bridge"],
+          ["Drop-off", "London Heathrow Airport"],
+          ["Concierge", { tel: "+442032973748", display: "+44 20 3297 3748" }]
+        ]
+      },
+      {
+        cat: "go", title: "Delta DL31 · Home",
+        sub: "LHR 1:25 PM → ATL 5:42 PM",
+        start: "2026-06-30T13:25:00+01:00",
+        details: [
+          ["Flight", "Delta DL31 · Delta One Classic (Z)"],
+          ["Departs", "LHR · 1:25 PM"],
+          ["Arrives", "ATL · 5:42 PM EDT"]
+        ]
+      }
+    ]
+  }
+];
+
+/* Travel summary for Hotel tab */
+const TRAVEL = [
+  {
+    title: "Heathrow → Hotel",
+    sub: "Wed, Jun 24 · 6:25 AM",
+    details: [
+      ["Flight", "Delta DL30"],
+      ["Service", "Range Rover · Four Seasons chauffeur"],
+      ["Cost", "£290 (2 guests, 4 bags)"],
+      ["Note", "45-min waiting time included; £140/hr after that"]
+    ]
+  },
+  {
+    title: "Cotswolds day trip",
+    sub: "Fri, Jun 26 · 7:30 AM",
+    details: [
+      ["Service", "Range Rover · as-directed (wait & return)"],
+      ["Billing", "£150/hr · 3-hour minimum"]
+    ]
+  },
+  {
+    title: "Seven Sisters → Empress",
+    sub: "Sun, Jun 28 · 7:30 AM",
+    details: [
+      ["Plan", "Hotel → Seven Sisters, wait, → Empress Museum"],
+      ["Service", "Range Rover · as-directed"],
+      ["Billing", "£150/hr · 3-hour minimum"]
+    ]
+  },
+  {
+    title: "Hotel → Heathrow",
+    sub: "Tue, Jun 30 · 10:15 AM",
+    details: [
+      ["Flight", "Delta DL31 · 1:25 PM"],
+      ["Service", "Range Rover · Four Seasons chauffeur"],
+      ["Cost", "£290 (2 guests, 4 bags)"]
+    ]
+  }
+];
+
+/* ---------- HELPERS ---------- */
+
+function fmtTime(iso) {
+  const d = new Date(iso);
+  const opts = { hour: "numeric", minute: "2-digit", hour12: true, timeZone: "Europe/London" };
+  return new Intl.DateTimeFormat("en-GB", opts).format(d).replace(/\s/g, " ").toLowerCase();
+}
+function fmtTimeParts(iso) {
+  const d = new Date(iso);
+  const hr = new Intl.DateTimeFormat("en-GB", { hour: "numeric", minute: "2-digit", hour12: true, timeZone: "Europe/London" }).format(d);
+  // hr like "6:25 pm"
+  const m = hr.match(/^(\d{1,2}:\d{2})\s*(am|pm|AM|PM)?/i);
+  if (!m) return { time: hr, ampm: "" };
+  return { time: m[1], ampm: (m[2] || "").toLowerCase() };
+}
+function fmtDateLong(iso) {
+  return new Intl.DateTimeFormat("en-GB", {
+    weekday: "long", day: "numeric", month: "long", timeZone: "Europe/London"
+  }).format(new Date(iso));
+}
+function mapsLink(q) {
+  const enc = encodeURIComponent(q);
+  // Apple Maps protocol falls through to Google on Android
+  return `https://maps.apple.com/?q=${enc}`;
+}
+
+function renderConfChip(text) {
+  const span = document.createElement("span");
+  span.className = "conf";
+  span.textContent = text;
+  span.title = "Tap to copy";
+  span.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (navigator.clipboard) navigator.clipboard.writeText(text).catch(()=>{});
+    flashCopied(span);
+  });
+  return span;
+}
+function flashCopied(el) {
+  const orig = el.textContent;
+  el.textContent = "copied";
+  setTimeout(() => { el.textContent = orig; }, 900);
+}
+
+function buildEventCard(ev, dayObj, opts={}) {
+  const card = document.createElement("div");
+  card.className = "event";
+  if (opts.openByDefault) card.classList.add("open");
+
+  const head = document.createElement("div");
+  head.className = "event-head";
+
+  const t = document.createElement("div");
+  t.className = "event-time";
+  const tp = fmtTimeParts(ev.start);
+  t.innerHTML = `<div>${tp.time}</div><div class="ampm">${tp.ampm}</div>`;
+
+  const title = document.createElement("div");
+  title.className = "event-title";
+  const name = document.createElement("div");
+  name.className = "name";
+  let statusPill = "";
+  if (ev.status === "pending")  statusPill = ` <span class="tag tag-status tag-pending">To Book</span>`;
+  if (ev.status === "walkin")   statusPill = ` <span class="tag tag-status tag-walkin">Walk-in</span>`;
+  if (ev.status === "inhouse")  statusPill = ` <span class="tag tag-status tag-inhouse">At Hotel</span>`;
+  name.innerHTML = ev.title + ` <span class="tag tag-${ev.cat}">${ev.cat==='eat'?'Dine':ev.cat==='see'?'See':'Go'}</span>` + statusPill;
+  const sub = document.createElement("div");
+  sub.className = "sub";
+  sub.innerHTML = ev.sub || "";
+  title.appendChild(name);
+  title.appendChild(sub);
+
+  const ch = document.createElement("div");
+  ch.className = "chev";
+  ch.textContent = "›";
+
+  head.appendChild(t);
+  head.appendChild(title);
+  head.appendChild(ch);
+
+  const body = document.createElement("div");
+  body.className = "event-body";
+
+  // Detail rows
+  if (ev.details) {
+    ev.details.forEach(([k, v]) => {
+      const row = document.createElement("div");
+      row.className = "row";
+      const kd = document.createElement("div");
+      kd.className = "k"; kd.textContent = k;
+      const vd = document.createElement("div");
+      vd.className = "v";
+      if (typeof v === "string") {
+        vd.textContent = v;
+      } else if (v && v.conf) {
+        vd.appendChild(renderConfChip(v.conf));
+      } else if (v && v.tel) {
+        const a = document.createElement("a");
+        a.href = `tel:${v.tel}`;
+        a.textContent = v.display || v.tel;
+        vd.appendChild(a);
+      }
+      row.appendChild(kd); row.appendChild(vd);
+      body.appendChild(row);
+    });
+  }
+
+  if (ev.note) {
+    const n = document.createElement("div");
+    n.className = "note";
+    n.innerHTML = ev.note;
+    body.appendChild(n);
+  }
+
+  if (ev.actions && ev.actions.length) {
+    const acts = document.createElement("div");
+    acts.className = "actions";
+    ev.actions.forEach((a, i) => {
+      const link = document.createElement("a");
+      link.className = "btn" + (i === 0 ? " primary" : "");
+      if (a.kind === "tel") {
+        link.href = `tel:${a.value}`;
+        link.innerHTML = `<span class="ic">📞</span><span>${a.label}</span>`;
+      } else if (a.kind === "map") {
+        link.href = mapsLink(a.value);
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.innerHTML = `<span class="ic">🗺️</span><span>${a.label}</span>`;
+      } else if (a.kind === "url") {
+        link.href = a.value;
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.innerHTML = `<span class="ic">↗</span><span>${a.label}</span>`;
+      }
+      acts.appendChild(link);
+    });
+    body.appendChild(acts);
+  }
+
+  card.appendChild(head);
+  card.appendChild(body);
+
+  head.addEventListener("click", () => card.classList.toggle("open"));
+
+  return card;
+}
+
+function buildDayHeader(dayObj) {
+  const h = document.createElement("div");
+  h.className = "day-header";
+  h.innerHTML = `
+    <div class="left">
+      <div class="day-num">${dayObj.label}</div>
+      <div class="day-date">${dayObj.short}</div>
+    </div>
+    <div class="day-tag">${dayObj.tag}</div>
+  `;
+  return h;
+}
+
+/* ---------- RENDER: ITINERARY ---------- */
+function renderItinerary() {
+  const root = document.getElementById("itinerary-list");
+  root.innerHTML = "";
+  days.forEach(d => {
+    root.appendChild(buildDayHeader(d));
+    d.events.forEach(ev => root.appendChild(buildEventCard(ev, d)));
+  });
+}
+
+/* ---------- RENDER: TODAY / OVERVIEW ---------- */
+function renderToday() {
+  // "Now/next" widget: find next upcoming event from now
+  const now = new Date();
+  let next = null, nextDay = null;
+  for (const d of days) {
+    for (const ev of d.events) {
+      if (new Date(ev.start) > now) { next = ev; nextDay = d; break; }
+    }
+    if (next) break;
+  }
+
+  const slot = document.getElementById("now-slot");
+  slot.innerHTML = "";
+  if (next) {
+    const card = document.createElement("div");
+    card.className = "now-card";
+    const days_until = Math.max(0, Math.floor((new Date(next.start) - now) / 86400000));
+    const lbl = days_until === 0 ? "UP NEXT" : days_until === 1 ? "TOMORROW" : `IN ${days_until} DAYS`;
+    card.innerHTML = `
+      <div class="now-lbl">${lbl}</div>
+      <div class="now-title">${next.title}</div>
+      <div class="now-sub">${next.sub || ""}</div>
+      <div class="now-time">${nextDay.short} · ${fmtTime(next.start)}</div>
+    `;
+    slot.appendChild(card);
+  } else if (now > TRIP_END) {
+    slot.innerHTML = `<div class="empty"><div class="em-title serif">Welcome home</div>What a trip.</div>`;
+  }
+
+  // Overview: each day, just the day header + collapsed event cards, but show only the key headline events expanded
+  const root = document.getElementById("overview-list");
+  root.innerHTML = "";
+  days.forEach(d => {
+    root.appendChild(buildDayHeader(d));
+    d.events.forEach(ev => root.appendChild(buildEventCard(ev, d)));
+  });
+}
+
+/* ---------- RENDER: TRAVEL (Hotel tab) ---------- */
+function renderTravel() {
+  const root = document.getElementById("travel-list");
+  root.innerHTML = "";
+  TRAVEL.forEach(t => {
+    const card = document.createElement("div");
+    card.className = "event";
+    const head = document.createElement("div");
+    head.className = "event-head";
+    head.innerHTML = `
+      <div class="event-time"><div>🚙</div></div>
+      <div class="event-title">
+        <div class="name">${t.title}</div>
+        <div class="sub">${t.sub}</div>
+      </div>
+      <div class="chev">›</div>
+    `;
+    const body = document.createElement("div");
+    body.className = "event-body";
+    t.details.forEach(([k, v]) => {
+      const row = document.createElement("div");
+      row.className = "row";
+      row.innerHTML = `<div class="k">${k}</div><div class="v">${v}</div>`;
+      body.appendChild(row);
+    });
+    card.appendChild(head); card.appendChild(body);
+    head.addEventListener("click", () => card.classList.toggle("open"));
+    root.appendChild(card);
+  });
+}
+
+/* ---------- RENDER: REFERENCES ---------- */
+function renderRefs() {
+  // Confirmations: pull all conf codes
+  const refs = [];
+  days.forEach(d => d.events.forEach(ev => {
+    (ev.details || []).forEach(([k, v]) => {
+      if (v && v.conf) refs.push({
+        name: ev.title,
+        sub: `${d.short} · ${k}`,
+        code: v.conf
+      });
+    });
+  }));
+
+  const r = document.getElementById("ref-list");
+  r.innerHTML = "";
+  refs.forEach(item => {
+    const row = document.createElement("div");
+    row.className = "ref-row";
+    const name = document.createElement("div");
+    name.className = "ref-name";
+    name.innerHTML = `${item.name}<span class="when">${item.sub}</span>`;
+    const code = renderConfChip(item.code);
+    row.appendChild(name);
+    row.appendChild(code);
+    r.appendChild(row);
+  });
+
+  // Phone book
+  const phones = [
+    { name: "Four Seasons – Front Desk", tel: "+442032973748", display: "+44 20 3297 3748" },
+    { name: "Four Seasons – Concierge SMS", tel: "+447481347440", display: "+44 74 8134 7440" },
+    { name: "Cooper’s Cut", tel: "+442032979228", display: "020 3297 9228" },
+    { name: "The Slaughters Country Inn", tel: "+441451822143", display: "01451 822143" },
+    { name: "Rules", tel: "+442078365314", display: "+44 20 7836 5314" },
+    { name: "The Wolseley", tel: "+442074996996", display: "020 7499 6996" },
+    { name: "Fallow", tel: "+442080171788", display: "+44 20 8017 1788" },
+    { name: "Fortnum & Mason – Tea Salon", tel: "+442077348040", display: "0207 734 8040" },
+    { name: "Din Tai Fung Covent Garden", tel: "+442030343888", display: "+44 20 3034 3888" },
+    { name: "Simpson’s Grand Divan", tel: "+442078369112", display: "020 7836 9112" },
+    { name: "Royal Collection Trust (Windsor)", tel: "+443031237300", display: "+44 303 123 7300" }
+  ];
+  const p = document.getElementById("phone-list");
+  p.innerHTML = "";
+  phones.forEach(ph => {
+    const row = document.createElement("div");
+    row.className = "ref-row";
+    row.innerHTML = `<div class="ref-name">${ph.name}<span class="when">tap to call</span></div>`;
+    const a = document.createElement("a");
+    a.href = `tel:${ph.tel}`;
+    a.className = "ref-code";
+    a.textContent = ph.display;
+    a.style.color = "var(--thames)";
+    a.style.textDecoration = "none";
+    row.appendChild(a);
+    p.appendChild(row);
+  });
+}
+
+/* ---------- COUNTDOWN ---------- */
+function tickCountdown() {
+  const now = new Date();
+  const target = now < TRIP_START ? TRIP_START : (now < TRIP_END ? TRIP_END : null);
+  const labels = ["Days", "Hours", "Mins", "Secs"];
+  if (!target) {
+    document.querySelectorAll(".countdown .num").forEach(n => n.textContent = "—");
+    document.querySelector(".hero-sub").textContent = "Trip complete · 24 – 30 June";
+    return;
+  }
+  let diff = Math.max(0, target - now);
+  const d = Math.floor(diff / 86400000); diff -= d*86400000;
+  const h = Math.floor(diff / 3600000);  diff -= h*3600000;
+  const m = Math.floor(diff / 60000);    diff -= m*60000;
+  const s = Math.floor(diff / 1000);
+  document.getElementById("cd-d").textContent = d;
+  document.getElementById("cd-h").textContent = String(h).padStart(2,"0");
+  document.getElementById("cd-m").textContent = String(m).padStart(2,"0");
+  document.getElementById("cd-s").textContent = String(s).padStart(2,"0");
+  // adjust labels based on phase
+  const lbls = document.querySelectorAll(".countdown .lbl");
+  if (now >= TRIP_START) {
+    lbls[0].textContent = "Days left";
+  } else {
+    lbls[0].textContent = "Days";
+  }
+}
+
+/* ---------- TABS ---------- */
+function setupTabs() {
+  const buttons = document.querySelectorAll("nav.tabs button");
+  buttons.forEach(b => {
+    b.addEventListener("click", () => {
+      buttons.forEach(x => x.classList.remove("active"));
+      b.classList.add("active");
+      const target = b.dataset.tab;
+      document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+      document.getElementById("tab-" + target).classList.add("active");
+      window.scrollTo({ top: 0, behavior: "instant" });
+    });
+  });
+}
+
+/* ---------- BOOT ---------- */
+renderItinerary();
+renderToday();
+renderTravel();
+renderRefs();
+setupTabs();
+tickCountdown();
+setInterval(tickCountdown, 1000);
+
+</script>
+
+</body>
+</html>

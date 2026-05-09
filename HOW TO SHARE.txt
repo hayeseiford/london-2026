@@ -1,0 +1,48 @@
+LONDON 2026 TRIP APP — HOW TO GET IT ON BOTH PHONES
+=====================================================
+
+The app is a single self-contained file: index.html
+Everything (data, styles, scripts) lives inside it. No internet required after first load.
+
+EASIEST OPTION — Netlify Drop (30 seconds, free, no signup needed)
+-------------------------------------------------------------------
+1. Open https://app.netlify.com/drop in your browser.
+2. Drag this folder ("London Trip App") onto the page.
+3. Netlify gives you a URL like https://random-name-12345.netlify.app
+4. Text that URL to Kayla. Done.
+
+To make it feel like a real app on iPhone:
+   Open the URL in Safari → Share button → "Add to Home Screen"
+   The icon (gold "L" on navy) will appear on your home screen.
+
+On Android:
+   Open the URL in Chrome → Menu → "Add to Home screen"
+
+
+ALTERNATIVE — Dropbox shared link
+---------------------------------
+This file is already inside Dropbox. To share via Dropbox:
+1. Right-click "index.html" in Dropbox → Share → Create link
+2. Send the link to Kayla. The catch: Dropbox sometimes shows it as a download
+   instead of opening it. To force it to open as a webpage, replace
+       ?dl=0
+   at the end of the URL with
+       ?raw=1
+
+   Even with that, "Add to Home Screen" works less cleanly than Netlify.
+
+
+ALTERNATIVE — GitHub Pages, Cloudflare Pages, Vercel
+-----------------------------------------------------
+Any free static host. All work the same way: upload index.html, get a URL.
+
+
+WHAT THE APP HAS
+----------------
+• Today tab — countdown, "up next" widget, full overview
+• Itinerary tab — every day, every reservation, every entry time
+• Hotel tab — Four Seasons contact buttons + travel/transfer summary
+• Refs tab — all confirmation codes (tap any to copy) + tap-to-call phone book
+
+Every phone number is tappable to call. Every address opens in Maps.
+The countdown auto-updates. Confirmation codes copy to clipboard with a tap.
