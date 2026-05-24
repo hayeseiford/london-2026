@@ -582,6 +582,136 @@
     letter-spacing: .18em;
   }
 
+  /* PACKING */
+  .pack-intro .event-body { padding-top: 14px; padding-bottom: 14px; }
+  .pack-controls {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .pack-controls .btn {
+    flex: 1;
+    font-size: 11px;
+    padding: 8px 10px;
+  }
+  .pack-group {
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    margin-bottom: 14px;
+  }
+  .pack-group-head {
+    padding: 12px 14px 10px;
+    background:
+      linear-gradient(180deg, rgba(255,253,247,.7), transparent),
+      var(--bg-soft);
+    border-bottom: 1px solid var(--line-soft);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .pack-group-head .label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .pack-group-head .ic {
+    font-size: 16px;
+    line-height: 1;
+  }
+  .pack-group-head .ttl {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-size: 15px;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--ink);
+  }
+  .pack-group-head .count {
+    font-size: 10px;
+    color: var(--accent-deep);
+    text-transform: uppercase;
+    letter-spacing: .18em;
+    font-weight: 600;
+  }
+  .pack-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--line-soft);
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .pack-item:last-child { border-bottom: 0; }
+  .pack-item:active { background: var(--bg-soft); }
+  .pack-check {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid var(--line);
+    border-radius: 4px;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+    transition: background .15s ease, border-color .15s ease;
+  }
+  .pack-check::after {
+    content: "";
+    width: 10px;
+    height: 6px;
+    border-left: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    transform: rotate(-45deg) translateY(-1px);
+    transition: border-color .15s ease;
+  }
+  .pack-item.done .pack-check {
+    background: var(--crimson);
+    border-color: var(--crimson);
+  }
+  .pack-item.done .pack-check::after {
+    border-left-color: #f6f1e6;
+    border-bottom-color: #f6f1e6;
+  }
+  .pack-text {
+    flex: 1;
+    min-width: 0;
+  }
+  .pack-name {
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.35;
+  }
+  .pack-name .who {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    padding: 1px 6px;
+    border-radius: 3px;
+    margin-left: 6px;
+    border: 1px solid currentColor;
+    vertical-align: middle;
+    color: var(--thames);
+  }
+  .pack-name .who.h { color: var(--green); }
+  .pack-note {
+    font-size: 11.5px;
+    color: var(--ink-mute);
+    margin-top: 3px;
+    line-height: 1.4;
+  }
+  .pack-item.done .pack-name {
+    color: var(--ink-mute);
+    text-decoration: line-through;
+    text-decoration-color: var(--line);
+  }
+
   /* TAB BAR */
   nav.tabs {
     position: fixed;
@@ -591,7 +721,7 @@
     background: var(--bg-elev);
     border-top: 1px solid var(--line);
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     box-shadow: var(--shadow-up);
     padding-bottom: var(--safe-bot);
     z-index: 50;
@@ -739,6 +869,22 @@
     <div class="footer-credit">Tower Bridge district</div>
   </section>
 
+  <!-- PACKING -->
+  <section class="tab" id="tab-pack">
+    <div class="section-h"><h2 class="serif">Packing list</h2><span class="meta" id="pack-counter">0 of 0</span></div>
+    <div class="pack-intro event open">
+      <div class="event-body">
+        <p style="margin:0;font-size:13.5px;color:var(--ink-soft);line-height:1.55;">Tap each item to check it off. Saved on this device — so Hayes and Kayla can each pack on their own phone. Built for <em>6 nights in London</em>, late-June weather, smart-dress dinners, the Seven Sisters cliff walk, a standing-room concert, and Wimbledon.</p>
+        <div class="pack-controls">
+          <button class="btn" id="pack-reset">Reset all</button>
+          <button class="btn" id="pack-check-all">Check all</button>
+        </div>
+      </div>
+    </div>
+    <div id="pack-list"></div>
+    <div class="footer-credit">Pack twice, check thrice</div>
+  </section>
+
   <!-- REFERENCES -->
   <section class="tab" id="tab-refs">
     <div class="section-h"><h2 class="serif">Confirmations</h2><span class="meta">tap to copy</span></div>
@@ -754,7 +900,8 @@
 
 <nav class="tabs">
   <button data-tab="today" class="active"><span class="ic">✨</span><span>Today</span></button>
-  <button data-tab="itinerary"><span class="ic">📖</span><span>Itinerary</span></button>
+  <button data-tab="itinerary"><span class="ic">📖</span><span>Plan</span></button>
+  <button data-tab="pack"><span class="ic">🧳</span><span>Pack</span></button>
   <button data-tab="hotel"><span class="ic">🏛️</span><span>Hotel</span></button>
   <button data-tab="refs"><span class="ic">🎟️</span><span>Refs</span></button>
 </nav>
@@ -1411,6 +1558,134 @@ const TRAVEL = [
   }
 ];
 
+/* Packing list — items are tagged H (Hayes) / K (Kayla) when person-specific.
+   `note` is shown beneath the item in muted text. */
+const PACK = [
+  {
+    icon: "📄", title: "Documents & money", items: [
+      { t: "Passport", n: "Valid through Dec 30, 2026 (6 mo past return)" },
+      { t: "UK ETA confirmation", n: "PDF on phone — both Hayes and Kayla" },
+      { t: "Driver’s license", n: "Backup photo ID" },
+      { t: "Visa / Mastercard", n: "Fallow and Din Tai Fung do NOT accept Amex" },
+      { t: "Backup credit card", n: "Stored separately from main wallet" },
+      { t: "~£100 cash", n: "Tips, Borough Market stalls, small shops" },
+      { t: "Travel insurance card / info" },
+      { t: "Notify bank of travel dates", n: "ATL → LHR June 23 – 30" }
+    ]
+  },
+  {
+    icon: "👔", title: "Smart attire (for dinners & tea)", items: [
+      { t: "Smart shirts × 4", n: "Rules · Wolseley · Fallow · Simpson’s · Cooper’s Cut", who: "H" },
+      { t: "Smart trousers × 2", n: "No shorts at Rules", who: "H" },
+      { t: "Blazer or sport coat", n: "Rules, Simpson’s especially", who: "H" },
+      { t: "Smart shoes + belt", who: "H" },
+      { t: "Cocktail / smart-casual dresses × 3", n: "F&M tea, Rules, Fallow, Simpson’s", who: "K" },
+      { t: "Daytime dress / nice top", n: "Lunches and Wolseley breakfast", who: "K" },
+      { t: "Heels or smart flats", who: "K" },
+      { t: "Statement piece (jewelry, scarf)", who: "K" }
+    ]
+  },
+  {
+    icon: "👕", title: "Day clothes", items: [
+      { t: "Tops × 6", n: "Mix of tees and nicer casual" },
+      { t: "Jeans / chinos × 2" },
+      { t: "Light sweater or pullover × 2", n: "London evenings can drop to mid-50s°F" },
+      { t: "Shorts × 1", n: "Daytime / Seven Sisters only — NOT for dinners" },
+      { t: "Underwear × 8" },
+      { t: "Socks × 8", n: "Including extras for wet days" },
+      { t: "Sleepwear" },
+      { t: "Workout clothes (if using FS gym)" }
+    ]
+  },
+  {
+    icon: "🌧", title: "Weather (June in London)", items: [
+      { t: "Packable rain jacket", n: "London averages ~10 rainy days in June" },
+      { t: "Compact umbrella" },
+      { t: "Light scarf or wrap" },
+      { t: "Sunglasses" },
+      { t: "Sunscreen", n: "Cliff walk + long days outdoors at Wimbledon" },
+      { t: "Brimmed hat or cap", n: "Wimbledon especially" }
+    ]
+  },
+  {
+    icon: "👟", title: "Footwear", items: [
+      { t: "Proper walking shoes", n: "Mandatory for Seven Sisters cliffs" },
+      { t: "Comfortable daily walking shoes", n: "Cotswolds villages + city days" },
+      { t: "Smart shoes for dinners", n: "Separate from walking pair" },
+      { t: "Blister plasters / Compeed", n: "Cotswolds + cliff days" }
+    ]
+  },
+  {
+    icon: "🎒", title: "Day bag", items: [
+      { t: "Small backpack or crossbody" },
+      { t: "Reusable water bottle", n: "Fill at hotel + airport after security" },
+      { t: "Portable battery pack + cable" },
+      { t: "Sunglasses + case" },
+      { t: "Tissues / wet wipes" },
+      { t: "Foldable tote", n: "Borough Market, Fortnum & Mason, Stow antiques" }
+    ]
+  },
+  {
+    icon: "🔌", title: "Tech & power", items: [
+      { t: "UK Type G plug adapter × 3", n: "230V — one per device minimum" },
+      { t: "Phone + charging cable" },
+      { t: "Watch / fitness tracker + charger" },
+      { t: "Camera + memory card + charger" },
+      { t: "Headphones", n: "Flight + Jon Batiste warm-up" },
+      { t: "E-reader / iPad", n: "Long flight, downtime" },
+      { t: "Download offline maps & itinerary app" }
+    ]
+  },
+  {
+    icon: "🧴", title: "Toiletries", items: [
+      { t: "Toothbrush + toothpaste", n: "Four Seasons may not provide" },
+      { t: "Razor + travel shaving cream", who: "H" },
+      { t: "Deodorant" },
+      { t: "Skincare / makeup", who: "K" },
+      { t: "Hair tools", n: "Four Seasons has 230V dryers; bring 230V flat iron or buy abroad", who: "K" },
+      { t: "Contact lenses + solution + glasses" },
+      { t: "Perfume / cologne (decant <100ml for flight)" },
+      { t: "Lip balm" }
+    ]
+  },
+  {
+    icon: "💊", title: "Health", items: [
+      { t: "Prescription meds", n: "Original bottles, enough for trip + 3 spare days" },
+      { t: "Pain reliever", n: "Tylenol or Advil — jet lag, walking soreness" },
+      { t: "Antacid / Tums", n: "Lots of rich food planned" },
+      { t: "Allergy meds", n: "London tree pollen peaks in June" },
+      { t: "Bandaids" },
+      { t: "Hand sanitizer (travel-size)" },
+      { t: "Melatonin for first 2 nights", n: "5 hr time shift" }
+    ]
+  },
+  {
+    icon: "✈️", title: "In the carry-on for the flight", items: [
+      { t: "Passport + ETA + boarding pass" },
+      { t: "Eye mask + earplugs", n: "Red-eye outbound" },
+      { t: "Compression socks", n: "9-hour flight" },
+      { t: "Light layer / sweatshirt", n: "Planes run cold" },
+      { t: "Empty water bottle", n: "Fill after security" },
+      { t: "Snacks", n: "Delta One has meals, but a backup for the long stretch" },
+      { t: "Wallet, keys, phone" },
+      { t: "Medications (don’t check)" },
+      { t: "One change of clothes", n: "If checked bag is delayed" },
+      { t: "Toothbrush + travel-size toothpaste" }
+    ]
+  },
+  {
+    icon: "📋", title: "Day-of departure checklist", items: [
+      { t: "Stop mail / hold packages" },
+      { t: "Thermostat to away mode" },
+      { t: "Empty fridge of perishables" },
+      { t: "Lock all windows + doors" },
+      { t: "Pet care / house-sitter confirmed" },
+      { t: "Out-of-office reply on" },
+      { t: "Phone international plan active", n: "Confirm with carrier 48 hr before" }
+    ]
+  }
+];
+
 /* ---------- HELPERS ---------- */
 
 function fmtTime(iso) {
@@ -1710,6 +1985,118 @@ function renderRefs() {
   });
 }
 
+/* ---------- RENDER: PACKING ---------- */
+const PACK_KEY = "london2026-pack-v1";
+function loadPackState() {
+  try { return JSON.parse(localStorage.getItem(PACK_KEY) || "{}"); }
+  catch (e) { return {}; }
+}
+function savePackState(state) {
+  try { localStorage.setItem(PACK_KEY, JSON.stringify(state)); } catch (e) {}
+}
+function packItemKey(g, i) { return `${g}|${i}`; }
+
+function renderPack() {
+  const root = document.getElementById("pack-list");
+  if (!root) return;
+  root.innerHTML = "";
+  const state = loadPackState();
+
+  PACK.forEach((group, gIdx) => {
+    const box = document.createElement("div");
+    box.className = "pack-group";
+
+    const head = document.createElement("div");
+    head.className = "pack-group-head";
+    const left = document.createElement("div");
+    left.className = "label";
+    left.innerHTML = `<span class="ic">${group.icon}</span><span class="ttl">${group.title}</span>`;
+    const count = document.createElement("span");
+    count.className = "count";
+    head.appendChild(left);
+    head.appendChild(count);
+    box.appendChild(head);
+
+    group.items.forEach((it, iIdx) => {
+      const key = packItemKey(gIdx, iIdx);
+      const checked = !!state[key];
+      const row = document.createElement("div");
+      row.className = "pack-item" + (checked ? " done" : "");
+
+      const chk = document.createElement("div");
+      chk.className = "pack-check";
+
+      const text = document.createElement("div");
+      text.className = "pack-text";
+      let nameHtml = it.t;
+      if (it.who === "H") nameHtml += ' <span class="who h">Hayes</span>';
+      if (it.who === "K") nameHtml += ' <span class="who">Kayla</span>';
+      const name = document.createElement("div");
+      name.className = "pack-name";
+      name.innerHTML = nameHtml;
+      text.appendChild(name);
+      if (it.n) {
+        const note = document.createElement("div");
+        note.className = "pack-note";
+        note.textContent = it.n;
+        text.appendChild(note);
+      }
+
+      row.appendChild(chk);
+      row.appendChild(text);
+      row.addEventListener("click", () => {
+        const cur = loadPackState();
+        cur[key] = !cur[key];
+        savePackState(cur);
+        row.classList.toggle("done", !!cur[key]);
+        updatePackCounts();
+      });
+      box.appendChild(row);
+    });
+
+    root.appendChild(box);
+  });
+
+  updatePackCounts();
+}
+
+function updatePackCounts() {
+  const state = loadPackState();
+  let total = 0, done = 0;
+  const root = document.getElementById("pack-list");
+  if (!root) return;
+  PACK.forEach((group, gIdx) => {
+    let gTotal = group.items.length, gDone = 0;
+    group.items.forEach((_, iIdx) => {
+      total++;
+      if (state[packItemKey(gIdx, iIdx)]) { done++; gDone++; }
+    });
+    const groupEl = root.children[gIdx];
+    if (groupEl) {
+      const countEl = groupEl.querySelector(".count");
+      if (countEl) countEl.textContent = `${gDone} / ${gTotal}`;
+    }
+  });
+  const headCounter = document.getElementById("pack-counter");
+  if (headCounter) headCounter.textContent = `${done} of ${total} packed`;
+}
+
+function wirePackControls() {
+  const reset = document.getElementById("pack-reset");
+  const all = document.getElementById("pack-check-all");
+  if (reset) reset.addEventListener("click", () => {
+    if (!confirm("Clear all checked items?")) return;
+    savePackState({});
+    renderPack();
+  });
+  if (all) all.addEventListener("click", () => {
+    const state = {};
+    PACK.forEach((g, gi) => g.items.forEach((_, ii) => state[packItemKey(gi, ii)] = true));
+    savePackState(state);
+    renderPack();
+  });
+}
+
 /* ---------- COUNTDOWN ---------- */
 function tickCountdown() {
   const now = new Date();
@@ -1758,6 +2145,8 @@ renderItinerary();
 renderToday();
 renderTravel();
 renderRefs();
+renderPack();
+wirePackControls();
 setupTabs();
 tickCountdown();
 setInterval(tickCountdown, 1000);
