@@ -715,6 +715,16 @@
     <div class="section-h"><h2 class="serif">Travel</h2></div>
     <div id="travel-list"></div>
 
+    <div class="section-h"><h2 class="serif">Travel documents</h2></div>
+    <div class="event open">
+      <div class="event-body">
+        <div class="row"><div class="k">UK ETA · Hayes</div><div class="v">Confirmed · PDF in <em>ETA Confirmations</em> Dropbox folder. <strong>Carry the PDF or have it on your phone.</strong></div></div>
+        <div class="row"><div class="k">UK ETA · Kayla</div><div class="v">Confirmed · PDF in <em>ETA Confirmations</em> Dropbox folder. <strong>Carry the PDF or have it on your phone.</strong></div></div>
+        <div class="row"><div class="k">Passport</div><div class="v">Must be valid through at least Dec 30, 2026 (6 months past return). Verify before packing.</div></div>
+        <div class="row"><div class="k">Hotel</div><div class="v">Four Seasons London at Tower Bridge · 6 nights, June 24 – 30, 2026 · 2 guests.</div></div>
+      </div>
+    </div>
+
     <div class="section-h"><h2 class="serif">Good to know</h2></div>
     <div class="event open">
       <div class="event-body">
@@ -1104,7 +1114,7 @@ const days = [
           ["Address", "Kensington Gardens, London W8 4PX"],
           ["Travel", "Tube · Green Park → High St Kensington · ~10 min + 5 min walk"]
         ],
-        note: "Tight transition — Wolseley booking runs until 10:00. Move briskly from breakfast; the entry stamp is timed to 10:00.",
+        note: "<strong>⚠ Tight transition.</strong> Wolseley → Kensington Palace is ~25 min via Tube (Green Park → High St Kensington). To make the 10:00 entry, leave the Wolseley by <strong>9:25 AM</strong> at the latest — that gives you under an hour for breakfast. Order quickly. <strong>Changing of the Guard cannot fit</strong> against a 10:00 Kensington slot — drop it or rebook Kensington.",
         actions: [
           { kind: "map", label: "Directions", value: "Kensington Palace, Kensington Gardens, London W8 4PX" }
         ]
@@ -1234,6 +1244,7 @@ const days = [
           ["Phone", { tel: "+442077348040", display: "0207 734 8040" }],
           ["Travel", "Tube · West Brompton → Green Park · ~20 min + 5 min walk"]
         ],
+        note: "<strong>⚠ Heavy stack.</strong> Tea is full sandwiches + scones + pastries, and table is held 1 hr 45 min — so you’re eating until ~7:15 PM, then sitting down to dumplings at 7:30. Plan to eat lightly here, or consider moving Din Tai Fung to a later night.",
         actions: [
           { kind: "tel", label: "Call salon", value: "+442077348040" },
           { kind: "map", label: "Directions", value: "Fortnum and Mason, 181 Piccadilly, London W1A 1ER" }
@@ -1248,9 +1259,10 @@ const days = [
           ["Party", "Table for 2"],
           ["Confirmation", { conf: "85X8CT3Z857V" }],
           ["Address", "5–6 Henrietta Street, Covent Garden, London WC2E 8PS"],
-          ["Phone", { tel: "+442030343888", display: "+44 20 3034 3888" }]
+          ["Phone", { tel: "+442030343888", display: "+44 20 3034 3888" }],
+          ["Travel from F&M", "~12 min walk (181 Piccadilly → Henrietta St)"]
         ],
-        note: "Table held only 10 minutes past 7:30 PM. Does not accept American Express.",
+        note: "Table held only 10 minutes past 7:30 PM. Does not accept American Express. Note: arriving straight from afternoon tea — expect to be very full.",
         actions: [
           { kind: "tel", label: "Call DTF", value: "+442030343888" },
           { kind: "map", label: "Directions", value: "Din Tai Fung Covent Garden, 5-6 Henrietta Street, London WC2E 8PS" }
@@ -1342,7 +1354,8 @@ const days = [
           ["Pickup", "Four Seasons Hotel London at Tower Bridge"],
           ["Drop-off", "London Heathrow Airport"],
           ["Concierge", { tel: "+442032973748", display: "+44 20 3297 3748" }]
-        ]
+        ],
+        note: "Arrives LHR around 11:45 AM for a 1:25 PM flight (~1 hr 40 min ahead). Tight by civilian standards but standard for Delta One with fast-track and lounge access. If traffic looks bad, ask concierge for an earlier pickup."
       },
       {
         cat: "go", title: "Delta DL31 · Home",
